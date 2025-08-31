@@ -1,0 +1,12 @@
+{{ $footerWidth := (index .Site.Data.footer "footer_width") }}
+<footer style="{{ if eq $footerWidth "contain" }}max-width: 1000px {{ end }}">
+    {{ range site.Data.footer.footer_links }}
+        {{ if .link_title }}
+            {{ if hasPrefix .url_path "http" }}
+                <a href="{{ .url_path }}" target="_self">{{ .link_title }}</a>
+            {{ else }}
+                <a href="/{{ .url_path | urlize }}" target="_self">{{ .link_title }}</a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</footer>

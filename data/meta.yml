@@ -1,0 +1,6 @@
+project_name: Pagefind docs theme
+default_og_image: /og.png
+favicon:
+  large_icon: /meta/favicon-96x96.png
+  apple_touch_icon: /meta/apple-touch-icon.png
+  shortcut_icon: /meta/favicon.ico

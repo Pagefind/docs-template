@@ -25,7 +25,7 @@
     <meta content="summary_large_image" name="twitter:card">
     <meta content="{{ site.Data.meta.default_og_image | absURL}}" property="twitter:image">
     
-    {{ if .Params.hidden }}
+    {{ if eq .Params.nav_section "Hidden" }}
     <meta name="robots" content="noindex, nofollow">
     {{ end }}
 

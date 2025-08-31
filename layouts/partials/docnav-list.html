@@ -8,14 +8,16 @@
 
     {{ $docs := sort (where .Site.Pages "Section" "docs") ".Params.weight" }}
     {{ range where $docs ".Params.nav_section" "Root" }}
+    {{ if not .Params.hidden }}
     <li class="{{ if eq .File.UniqueID $page.File.UniqueID }}active {{ end }}">
         <a href="{{ .Permalink | relURL }}"> {{ .Params.nav_title }}</a>
     </li>
     {{ end }}
+    {{ end }}
 
     {{ $groups := slice }}
     {{ range $docs }}
-    {{ if not (eq .Params.nav_section "Root") }}
+    {{ if and (not (eq .Params.nav_section "Root")) (not .Params.hidden) }}
     {{ $groups = $groups | append .Params.nav_section }}
     {{ end }}
     {{ end }}
@@ -26,9 +28,11 @@
         <p class="docnav-title">{{ . }}</p>
         <ol class="docnav-list">
             {{ range where $docs ".Params.nav_section" . }}
+            {{ if not .Params.hidden }}
             <li class="{{ if eq .File.UniqueID $page.File.UniqueID }}active {{ end }}">
                 <a href="{{ .Permalink | relURL }}"> {{ .Params.nav_title }}</a>
             </li>
+            {{ end }}
             {{ end }}
         </ol>
     </li>

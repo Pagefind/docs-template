@@ -24,6 +24,10 @@
     <meta content="article" property="og:type">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="{{ site.Data.meta.default_og_image | absURL}}" property="twitter:image">
+    
+    {{ if .Params.hidden }}
+    <meta name="robots" content="noindex, nofollow">
+    {{ end }}
 
     <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
     {{ $style := resources.Get "css/site.scss" | toCSS | minify | fingerprint }}
